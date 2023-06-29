@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container">
+
+		<h1 class="text-primary" th:text="${titulo}"></h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Nombre</td>
+					<td>Tipo</td>
+					<td>Calle</td>
+					<td>Número</td>
+					<td>E-mail</td>
+					<td colspan="2">Acciones</td>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="tienda: ${tiendas}">
+					<td><a th:href="@{/tiendas/id/} + ${tienda.id}"><spam
+								th:text="${tienda.id}"></spam></a></td>
+					<td th:text="${tienda.nombre}"></td>
+					<td><a th:href="@{/tiendas/tipo/} + ${tienda.tipo}"><spam
+								th:text="${tienda.tipo}"></spam></a></td>
+					<td th:text="${tienda.calle}"></td>
+					<td th:text="${tienda.numero}"></td>
+					<td th:text="${tienda.email}"></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/tiendas/borrar/} + ${tienda.id}"> Borrar </a></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/tiendas/editar/} + ${tienda.id}"> Editar </a></td>
+				</tr>
+			</tbody>
+		</table>
+		<nav th:replace="paginator-nav :: paginator"></nav>
+		
+	</div>
+	<footer th:replace="~{layout/layout :: footer}" ></footer>
+
+</body>
+</html>

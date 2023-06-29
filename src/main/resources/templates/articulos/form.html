@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container">
+
+		<h1 class="text-primary" th:text="${titulo}"></h1>
+		<!--
+			Esta la he anulado para eliminar el tema de la foto  
+			<form th:action="@{/articulos/form}" th:object="${articulo}" method="post" enctype="multipart/form-data">
+		-->
+		<form th:action="@{/articulos/form}" th:object="${articulo}" method="post">
+
+			<table>
+				<tr>
+					<td>Tipo</td>
+					<td><input type="text" th:field="*{tipo}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('tipo')}"><small
+						th:errors="*{tipo}" class="form-text text-danger"></small></td>
+				</tr>
+				<tr>
+					<td>Marca</td>
+					<td><input type="text" th:field="*{marca}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('marca')}"><small
+						th:errors="*{marca}" class="form-text text-danger"></small></td>
+				</tr>
+				<tr>
+					<td>Modelo</td>
+					<td><input type="text" th:field="*{modelo}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('modelo')}"><small
+						th:errors="*{modelo}" class="form-text text-danger"></small></td>
+				</tr>
+
+				<tr>
+					<td>Cantidad</td>
+					<td><input type="text" th:field="*{cantidadArticulos}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('cantidadArticulos')}"><small
+						th:errors="*{cantidadArticulos}" class="form-text text-danger"></small></td>
+				</tr>
+				
+				<tr>
+					<td>Precio</td>
+					<td><input type="text" th:field="*{precio}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('precio')}"><small
+						th:errors="*{precio}" class="form-text text-danger"></small></td>
+				</tr>
+
+				<!-- De momento la foto la quito, ya que no me gusta la solución 
+					<tr>
+						<td>Foto</td>
+						<td><input type="file" name="file" class="form-control" /></td>
+					</tr>
+				-->
+				<tr>
+					<td></td>
+					<td align="right">
+						<input type="submit" value="Guardar"
+						class="btn btn-primary" />
+					</td>
+				</tr>
+
+			</table>
+
+			<input type="hidden" th:field="*{id}" />
+		</form>
+
+
+
+	</div>
+	<footer th:replace="~{layout/layout :: footer}" ></footer>
+</body>
+</html>

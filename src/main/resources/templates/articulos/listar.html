@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container">
+
+		<h1 class="text-primary" th:text="${titulo}"></h1>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Tipo</td>
+					<td>Marca</td>
+					<td>Modelo</td>
+					<td>Cantidad</td>
+					<td>Precio</td>
+					<td colspan="2">Acciones</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="articulo: ${articulos}">
+					<td><a th:href="@{/articulos/id/} + ${articulo.id}"><spam
+								th:text="${articulo.id}"></spam></a></td>
+					<td><a th:href="@{/articulos/tipo/} + ${articulo.tipo}"><spam
+								th:text="${articulo.tipo}"></spam></a></td>
+					<td><a th:href="@{/articulos/marca/} + ${articulo.marca}"><spam
+								th:text="${articulo.marca}"></spam></a></td>
+					<td th:text="${articulo.modelo}"></td>
+					<td th:text="${articulo.cantidadArticulos}"></td>
+					<td th:text="${articulo.precio}"></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/articulos/borrar/} + ${articulo.id}"> Borrar </a></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/articulos/editar/} + ${articulo.id}"> Editar </a></td>
+				</tr>
+			</tbody>
+		</table>
+		<nav th:replace="~{paginator-nav :: paginator}"></nav>
+	</div>
+	<footer th:replace="~{layout/layout :: footer}" ></footer>
+
+</body>
+</html>
+
