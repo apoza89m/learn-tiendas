@@ -28,3 +28,5 @@ INSERT INTO tiendas (nombre, tipo, calle, numero, email) VALUES ('Tienda G', 'Li
 INSERT INTO tiendas (nombre, tipo, calle, numero, email) VALUES ('Tienda H', 'Belleza', 'Avenida del Mar', '18', 'tiendaH@example.com');
 INSERT INTO tiendas (nombre, tipo, calle, numero, email) VALUES ('Tienda I', 'Joyería', 'Calle de la Luna', '5', 'tiendaI@example.com');
 INSERT INTO tiendas (nombre, tipo, calle, numero, email) VALUES ('Tienda J', 'Librería', 'Avenida del Sol', '22', 'tiendaJ@example.com');
+INSERT INTO pedidos (referencia, descripcion, tienda_id) VALUES ('Referencia del primer pedido', 'Descripción del primer pedido', 1);
+INSERT INTO pedidos (referencia, descripcion, tienda_id) VALUES ('Referencia del segundo pedido', 'Descripción del segundo pedido', 1);

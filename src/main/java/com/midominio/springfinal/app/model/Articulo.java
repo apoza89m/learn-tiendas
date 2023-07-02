@@ -2,7 +2,6 @@ package com.midominio.springfinal.app.model;
 
 import java.io.Serializable;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,12 +34,26 @@ public class Articulo implements Serializable {
 	@NotEmpty
 	@Size(min = 3, max=25)
 	private String modelo;
+	
+	/*
+	
+	No vamos a utilizar la cantidad de artículos en adelante
 
 	@Column(name = "cantidad_articulos")
 	@NotNull
-	@Min(value = 0, message = "Cantidad de artículos debe ser mayor Que 0")
+	@Min(value = 0, message = "Cantidad de artículos debe ser mayor que 0")
 	@Max(value = 1_000)
 	private Integer cantidadArticulos;
+	
+		public Integer getCantidadArticulos() {
+		return cantidadArticulos;
+	}
+
+	public void setCantidadArticulos(Integer cantidadArticulos) {
+		this.cantidadArticulos = cantidadArticulos;
+	}
+	
+	*/
 
 	@NotNull
 	@Min(value = 0)
@@ -90,17 +103,10 @@ public class Articulo implements Serializable {
 		return modelo;
 	}
 
-	public void setModelo(String modelo) {
+	public void setModelo(String modselo) {
 		this.modelo = modelo;
 	}
 
-	public Integer getCantidadArticulos() {
-		return cantidadArticulos;
-	}
-
-	public void setCantidadArticulos(Integer cantidadArticulos) {
-		this.cantidadArticulos = cantidadArticulos;
-	}
 
 	public Double getPrecio() {
 		return precio;

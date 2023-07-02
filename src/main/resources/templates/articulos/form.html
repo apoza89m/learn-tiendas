@@ -34,7 +34,7 @@
 					<td th:if="${#fields.hasErrors('modelo')}"><small
 						th:errors="*{modelo}" class="form-text text-danger"></small></td>
 				</tr>
-
+				<!-- Dejamos de utilizar esto para simplificar el modelo
 				<tr>
 					<td>Cantidad</td>
 					<td><input type="text" th:field="*{cantidadArticulos}"
@@ -42,6 +42,7 @@
 					<td th:if="${#fields.hasErrors('cantidadArticulos')}"><small
 						th:errors="*{cantidadArticulos}" class="form-text text-danger"></small></td>
 				</tr>
+				-->
 				
 				<tr>
 					<td>Precio</td>
