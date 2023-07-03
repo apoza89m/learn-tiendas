@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.midominio.springfinal.app.model.Articulo;
+import com.midominio.springfinal.app.model.Pedido;
 import com.midominio.springfinal.app.model.Tienda;
 
 public interface TiendaService {
@@ -18,4 +19,8 @@ public interface TiendaService {
 	void delete(Long id);
 	void save(Tienda tienda);
 	Tienda guardar(Tienda tienda);	
+	void guardarPedido(Pedido pedido);
+	Articulo findArticuloById(Long id);
+	void deletePedido(Pedido pedido);
+	Pedido findPedidoById(Long id); 
 }

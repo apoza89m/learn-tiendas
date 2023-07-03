@@ -35,7 +35,7 @@ public class Pedido implements Serializable{
 	// Descarga los elementos relacionados de forma perezosa
 	// El borrado se produce en cascada
 	
-	@ManyToOne(fetch = FetchType.EAGER)  // Carga perezosa
+	@ManyToOne(fetch = FetchType.EAGER)  // Carga no perezosa
 	private Tienda tienda;
 	
 	public Tienda getTienda() {
@@ -54,11 +54,11 @@ public class Pedido implements Serializable{
 	// El enlace se produce utilizando el campo tienda de la clase Pedido y es bidireccional
 	// Descarga los elementos relacionados de forma perezosa
 	// El borrado se produce en cascada
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "pedido_id")
 	private List<LineaPedido> lineas;
 	
-	// Geeter & Setter
+	// Getter & Setter
 	public List<LineaPedido> getLineas() {
 		return lineas;
 	}

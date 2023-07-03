@@ -33,6 +33,8 @@
 							<th>Referencia</th>
 							<th>Descripción</th>
 							<th>Importe</th>
+							<th>ver</th>
+							<th>eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -41,6 +43,11 @@
 							<td th:text="${pedido.referencia}"></td>
 							<td th:text="${pedido.descripcion}"></td>
 							<td th:text="${pedido.getPrecioTotal()}"></td>
+							<td><a class="btn btn-primary btn-sm" th:href="@{'/pedido/ver/' + ${pedido.id}}" th:text="'detalle'"></a></td>
+							<td><a class="btn btn-danger btn-sm" th:href="@{'/pedido/eliminar/' + ${pedido.id}}" th:text="'eliminar'"
+							 onclick="return confirm('¿Estas seguro que desea eliminar el pedido?');"></a></td>
+							
+							
 						</tr>
 					</tbody>
 				</table>

@@ -15,9 +15,8 @@
 						th:text="'&laquo; tienda'"></a>
 				</h4>
 
-				<form th:action="@{/pedido/form/}" th:object="${pedido}"
+				<form th:action="@{/pedido/form}" th:object="${pedido}"
 					method="post">
-
 					<div class="form-group row">
 						<label for="tienda" class="col-sm-2 col-form-label"
 							th:text="'Tienda'"></label>

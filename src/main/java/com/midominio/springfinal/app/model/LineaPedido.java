@@ -36,13 +36,7 @@ public class LineaPedido implements Serializable {
 		this.precio = precio;
 	}
 
-	public Articulo getArticulo() {
-		return articulo;
-	}
 
-	public void setArticulo(Articulo articulo) {
-		this.articulo = articulo;
-	}
 
 	// [<<<---START]
 	// RELACION LINEA DE PEDIDO Y ARTICULO MUCHOS A 1 (UNIDIRECCIONAL LINEA -> ARTICULO)  	
@@ -58,6 +52,16 @@ public class LineaPedido implements Serializable {
 	public double calcularPrecio() {
 		return cantidad * articulo.getPrecio();
 	}
+	
+	// Getter & Setter
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
+	}
+	
 	// [END--->>>]	
 	
 	public Integer getCantidad() {
@@ -71,4 +75,6 @@ public class LineaPedido implements Serializable {
 	public Long getId() {
 		return id;
 	}
+	
+	
 }

@@ -49,6 +49,12 @@
 					return false;
 				}
 			});
+			
+			$("form").submit(function(){
+				$("#plantillaItemsPedido").remove();
+				return;
+			});
+			
 		});
 		
 		var itemsHelper = {
