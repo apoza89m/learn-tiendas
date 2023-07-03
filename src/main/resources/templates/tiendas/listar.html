@@ -16,7 +16,7 @@
 					<td>Calle</td>
 					<td>Número</td>
 					<td>E-mail</td>
-					<td colspan="2">Acciones</td>
+					<td colspan="4">Acciones</td>
 
 				</tr>
 			</thead>
@@ -30,6 +30,10 @@
 					<td th:text="${tienda.calle}"></td>
 					<td th:text="${tienda.numero}"></td>
 					<td th:text="${tienda.email}"></td>
+					<td><a class="btn btn-success btn-xs"
+						th:href="@{/pedido/form/} + ${tienda.id}"> Pedido+ </a></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/tiendas/ver/} + ${tienda.id}"> Ver </a></td>
 					<td><a class="btn btn-primary btn-xs"
 						th:href="@{/tiendas/borrar/} + ${tienda.id}"> Borrar </a></td>
 					<td><a class="btn btn-primary btn-xs"

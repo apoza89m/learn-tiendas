@@ -64,11 +64,11 @@ public class TiendaController {
 
 		Tienda tienda = tiendaService.findById(id);
 		if (tienda == null) {
-			flash.addFlashAttribute("error", "La tienda no existe en la base de datos");
+			flash.addFlashAttribute("warning", "La tienda no existe en la base de datos");
 			return "redirect:/tiendas/listar";
 		}
 		model.put("tienda", tienda);
-		model.put("pedidos", tienda.getPedidos());
+		// model.put("pedidos", tienda.getPedidos());
 		model.put("titulo", "Información de la tienda: " + tienda.getNombre());
 		return "tiendas/ver";
 	}

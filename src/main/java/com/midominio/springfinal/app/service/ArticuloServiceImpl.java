@@ -88,6 +88,9 @@ public class ArticuloServiceImpl implements ArticuloService {
 		return repository.findByMarca(pageable, marca);
 	}
 
-
-
+	@Override
+	@Transactional(readOnly = true)
+	public List<Articulo> findByTipoText(String text) {
+		return repository.findByTipoLikeIgnoreCase("%" + text + "%");
+	}
 }

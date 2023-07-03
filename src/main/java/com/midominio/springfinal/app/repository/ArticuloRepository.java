@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
@@ -16,4 +17,9 @@ public interface ArticuloRepository extends PagingAndSortingRepository<Articulo,
     Page<Articulo> findByTipo(Pageable pageable, String tipo);
     Page<Articulo> findByMarca(Pageable pageable, String tipo);
     Page<Articulo> findById(Pageable pageable, Long id);
+    
+	@Query("select p from Articulo p where p.tipo like %?1%")
+	public List<Articulo> findByTipoText(String text);
+	
+	public List<Articulo> findByTipoLikeIgnoreCase(String text);
 }

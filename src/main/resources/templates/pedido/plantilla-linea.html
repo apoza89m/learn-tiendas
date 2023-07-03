@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<table th:fragment="itemsLinea" class="d-none">
+
+		<tbody id="plantillaItemsPedido">
+			<tr id="row_{ID}">
+				<td class="d-none"><input type="hidden" value="{ID}"
+					name="item_id[]" /></td>
+				<td>{TIPO}</td>
+				<td>{MARCA}</td>
+				<td>{MODELO}</td>
+				<td>{PRECIO}</td>
+				<td><input type="number" value="0" name="cantidad[]"
+					id="cantidad_{ID}" class="form-control col-sm-4" 
+					onchange="itemsHelper.calcularImporte('{ID}', '{PRECIO}', this.value); itemsHelper.calcularGranTotal();"/></td>
+				<td><span id="total_importe_{ID}">0</span></td>
+				<td><a href="#" class="btn btn-danger btn-sm" onclick="itemsHelper.eliminarLineaPedido({ID});">x</a></td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>
