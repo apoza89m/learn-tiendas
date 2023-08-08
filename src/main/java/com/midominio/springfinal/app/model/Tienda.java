@@ -1,20 +1,26 @@
 package com.midominio.springfinal.app.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.antlr.v4.runtime.misc.NotNull;
-
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tiendas")
+@Getter @Setter
 public class Tienda implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -38,57 +44,21 @@ public class Tienda implements Serializable {
 	@NotEmpty
 	@Email
 	private String email;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
-	public String getCalle() {
-		return calle;
-	}
-
-	public void setCalle(String calle) {
-		this.calle = calle;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
-	public void setNumero(String numero) {
-		this.numero = numero;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	
+	@OneToMany(mappedBy = "tienda" , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	//mappedBy -> relacion bidireccional
+	private List<Pedido> pedidos;
+	
+	// Constructor vacío de la tienda inicializa la lista de pedidos (en blanco)
+	public Tienda() {pedidos = new ArrayList<Pedido>();}
+	
+	// Método para añadir pedido  a la tienda (añade elemento a la lista de pedidos)
+	public void addPedido(Pedido pedido) {
+		pedidos.add(pedido);
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
+		
 }

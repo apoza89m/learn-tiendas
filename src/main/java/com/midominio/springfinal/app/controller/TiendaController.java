@@ -2,6 +2,7 @@ package com.midominio.springfinal.app.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,12 +17,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.midominio.springfinal.app.model.Articulo;
 import com.midominio.springfinal.app.model.Tienda;
 import com.midominio.springfinal.app.service.TiendaService;
 import com.midominio.springfinal.app.utils.paginator.PageRender;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 @Controller
@@ -74,7 +77,7 @@ public class TiendaController {
 		model.addAttribute("titulo", "Listado de tiendas");
 		tiendaService.delete(id);
 		model.addAttribute("tiendas", tiendaService.listar());
-		return "tiendas/listar";		
+		return "redirect:/tiendas/listar";		
 	}	
 	@GetMapping("/editar")
 	public String formGet(Model model) {
@@ -101,4 +104,19 @@ public class TiendaController {
 		return "redirect:listar";
 	}
 	
+	@GetMapping(value = "/ver/{id}")
+	@Transactional
+	public String ver(@PathVariable(value = "id") Long id, 
+			Map<String, Object> model, 
+			RedirectAttributes flash) {
+
+		Tienda tienda = tiendaService.findById(id);
+		if (tienda == null) {
+			flash.addFlashAttribute("warning", "La tienda no existe en la base de datos");
+			return "redirect:/tiendas/listar";
+		}
+		model.put("tienda", tienda);
+		model.put("titulo", "Información de la tienda: " + tienda.getNombre());
+		return "tiendas/ver";
+	}
 }

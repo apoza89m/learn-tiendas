@@ -14,7 +14,7 @@
 					<td>Tipo</td>
 					<td>Marca</td>
 					<td>Modelo</td>
-					<td>Cantidad</td>
+					<!--<td>Cantidad</td>-->
 					<td>Precio</td>
 					<td colspan="2">Acciones</td>
 				</tr>
@@ -28,7 +28,7 @@
 					<td><a th:href="@{/articulos/marca/} + ${articulo.marca}"><spam
 								th:text="${articulo.marca}"></spam></a></td>
 					<td th:text="${articulo.modelo}"></td>
-					<td th:text="${articulo.cantidadArticulos}"></td>
+					<!--<td th:text="${articulo.cantidadArticulos}"></td>-->
 					<td th:text="${articulo.precio}"></td>
 					<td><a class="btn btn-primary btn-xs"
 						th:href="@{/articulos/borrar/} + ${articulo.id}"> Borrar </a></td>
