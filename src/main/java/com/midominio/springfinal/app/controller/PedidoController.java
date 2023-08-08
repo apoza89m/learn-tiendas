@@ -49,7 +49,8 @@ public class PedidoController {
 		return "pedido/form";
 	}
 	@GetMapping(value="/buscar-articulos/{text}", produces= {"application/json"})
-	public @ResponseBody List<Articulo> cargarArticulos(@PathVariable String text){
+	@ResponseBody
+		public List<Articulo> cargarArticulos(@PathVariable String text){
 		return articuloService.findByTipoText(text);
 	}
 }
