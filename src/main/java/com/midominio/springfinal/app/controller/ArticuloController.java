@@ -131,7 +131,7 @@ public class ArticuloController {
 		}
 
 		/* 
-		 * De momento dejo la fotografía fuera, no me gusta la solución
+		De momento dejo la fotografía fuera, no me gusta la solución
 		if (!foto.isEmpty()) {
 			String rootPath = "/opt/upload";
 			try {

@@ -19,4 +19,6 @@ public interface ArticuloService {
 	void delete(Long id);
 	void save(Articulo articulo);
 	Articulo guardar(Articulo articulo);
+	
+	List<Articulo> findByTipoText(String text);
 }
