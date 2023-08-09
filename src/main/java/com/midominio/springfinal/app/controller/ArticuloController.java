@@ -25,6 +25,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributesModelMap;
 
 import com.midominio.springfinal.app.model.Articulo;
 import com.midominio.springfinal.app.service.ArticuloService;
+import com.midominio.springfinal.app.service.LineaPedidoService;
 import com.midominio.springfinal.app.utils.paginator.PageRender;
 
 import jakarta.validation.Valid;
@@ -35,6 +36,9 @@ public class ArticuloController {
 
 	@Autowired
 	ArticuloService articuloService;
+	
+	@Autowired
+	LineaPedidoService lineaPedidoService;
 
 	/*
 	 * 
@@ -106,10 +110,16 @@ public class ArticuloController {
 	@GetMapping("/borrar/{id}")
 	public String listarPor(@PathVariable Long id, Model model, RedirectAttributes flash) {
 		model.addAttribute("titulo", "Listado de Artículos");
-		articuloService.delete(id);
 		model.addAttribute("articulos", articuloService.listar());
+		
+		if (!lineaPedidoService.findByArticulo(articuloService.findById(id)).isEmpty()) {
+			flash.addFlashAttribute("warning", "Error: articulo existe en un pedido");
+			return "redirect:/articulos/listar";
+		}
+		articuloService.delete(id);	
 		flash.addFlashAttribute("warning", "Artículo borrado con éxito");
 		return "redirect:/articulos/listar";
+
 	}
 
 	@GetMapping("/editar/{id}")
